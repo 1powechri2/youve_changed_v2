@@ -21,18 +21,19 @@ module YouveChangedV2
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.generators.system_tests = nil
 
     config.action_mailer.delivery_method = :smtp
+    config.action_mailer.perform_deliveries = true
 
     config.action_mailer.smtp_settings = {
       address:              'smtp.sendgrid.net',
       port:                 '587',
-      domain:               'example.com',
+      domain:               'herokuapp.com/',
       user_name:            ENV["SENDGRID_USERNAME"],
       password:             ENV["SENDGRID_PASSWORD"],
       authentication:       'plain',
       enable_starttls_auto: true
     }
-    config.generators.system_tests = nil
   end
 end
